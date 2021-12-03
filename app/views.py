@@ -61,6 +61,29 @@ def update_student(request,pk):
     }
     return render (request, 'student_update.html',locals())
 
+
+
+def formA(request):
+    students = Student.objects.filter(stream ='Form 1A')
+
+    
+    return render(request, 'index.html',locals())
+
+
+def formB(request):
+    students = Student.objects.all()
+    streams = Stream.objects.all()
+    return render(request, 'index.html',locals())
+
+def formC(request):
+    students = Student.objects.all()
+    streams = Stream.objects.all()
+    return render(request, 'index.html',locals())
+
+
+
+
+
     
   
 

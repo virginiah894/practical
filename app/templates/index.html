@@ -15,21 +15,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
+        
         <li class="nav-item">
           <a class="nav-link" href="{% url 'update'%}">Update</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="">Delete</a>
-        </li>
+       
       </ul>
     </div>
   </div>
 </nav>
 
-<h3 style="text-align: center">All Our Students</h3>
+<h3 style="text-align: center;margin-top: 12px;">All Our Students</h3>
 
 <div class="container">
   <div class="row">
@@ -43,7 +39,7 @@
           class="card-img-top"
           src="https://media.istockphoto.com/photos/portrait-of-cool-teenager-with-white-sunglasses-picture-id1284906731?b=1&k=20&m=1284906731&s=170667a&w=0&h=jLRfqFvUvN_ikE2ni2mekYpFHNOviCxDc1ZdW0GhJj4="
           alt="Card image cap"
-          style="width: 350px; height: 290px"
+          style="width: 350px; height: 240px"
         />
         <div class="card-body">
           <h5
@@ -87,19 +83,21 @@
    
   </div>
 </div>
-<h4 style="text-align: center;">Our Classes</h4>
+<div class="container">
+<h4 style="text-align: center;">Our Streams</h4>
 <div class="row">
+
 
     {% for str in streams%}
     <div class="col-md-4">
 
     
-      <button class="btn btn-dark"><a href="">{{str.title}}</a></button>
+      <button class="btn btn-outline-dark"><a href="">{{str.title}}</a></button>
       </div>
 
     {% endfor %}
 </div>
-
+</div>
 
 
 {% endblock %}
