@@ -50,7 +50,7 @@ def update_student(request,pk):
         form = StudentForm(request.POST, instance = student)
         if form.is_valid():
             form.save()
-            return redirect ('student-det')
+            return redirect ('home')
     else:
         form = StudentForm( instance=student)
 
