@@ -1,0 +1,71 @@
+{%extends 'base.html' %}
+
+{% block title%} Student Page {% endblock%}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-info text-white">Student Profile Page</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <span class = "h4">Student  Information</span>
+                            <hr>
+                            <table class="table bg-white table-borderless">
+                               
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Name</th>
+                                        <td>{{student.name}}</td>
+                                       
+                                        </td>
+                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Registration Number</th>
+                                        <td>{{student.reg_num}}</td>
+                                       
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Stream</th>
+                                        <td>{{student.stream}}</td>
+
+                                    </tr>
+                            
+                                </tbody>
+                            </table>
+                        
+
+                        </div>
+                        <div class="col-md-4">
+                            <img src="" alt="" class="img-thumbnail ">
+                        </div>
+                        <br>
+
+
+                        <a class="btn btn-info btn-sm" href="{% url 'stu-update' stu.id%}">Edit</a>
+
+
+                        <a class="btn btn-info btn-sm" href="{% url 'home' %}">Back</a>
+
+                    </div>
+                   
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+{% endblock %}
