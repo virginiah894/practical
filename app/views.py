@@ -30,13 +30,8 @@ def student_delete(request,pk):
     if request.method=='POST':
         student.delete()
         return redirect('home')
-
-
-        context ={
-            'student':student,
-        }
-        return render(request,'delete.html',locals())
-
+    
+    return render(request,'delete.html',locals())
 
 
 def student_details(request,pk):
@@ -64,7 +59,7 @@ def update_student(request,pk):
         'form': form,
 
     }
-    return render (request, 'student_update.html',context,pk=pk)
+    return render (request, 'student_update.html',locals())
 
     
   
