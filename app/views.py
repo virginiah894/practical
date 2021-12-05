@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from .models import *
 from.forms import StudentForm
 
@@ -64,21 +64,22 @@ def update_student(request,pk):
 
 
 def formA(request):
-    students = Student.objects.all()
+    students = Student.objects.filter(stream_name__stream_name='Form 1A')
+
 
     
     return render(request, 'form1a.html',locals())
 
+    
+
 
 def formB(request):
-    students = Student.objects.all()
-    streams = Stream.objects.all()
-    return render(request, 'form1b.html',locals())
+      students = Student.objects.filter(stream_name__stream_name='Form 1B')
+      return render(request, 'form1b.html',locals())
 
 def formC(request):
-    students = Student.objects.all()
-    streams = Stream.objects.all()
-    return render(request, 'form1c.html',locals())
+      students = Student.objects.filter(stream_name__stream_name='Form 1C')
+      return render(request, 'form1c.html',locals())
 
 
 
