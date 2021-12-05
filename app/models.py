@@ -6,6 +6,10 @@ class Stream (models.Model):
     def __str__(self) -> str:
         return self.title
 
+
+        
+
+  
 class Student(models.Model):
     name = models.CharField(max_length=20)
     email = models.EmailField()

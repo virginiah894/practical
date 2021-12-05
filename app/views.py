@@ -64,21 +64,21 @@ def update_student(request,pk):
 
 
 def formA(request):
-    students = Student.objects.filter(stream ='Form 1A')
+    students = Student.objects.all()
 
     
-    return render(request, 'index.html',locals())
+    return render(request, 'form1a.html',locals())
 
 
 def formB(request):
     students = Student.objects.all()
     streams = Stream.objects.all()
-    return render(request, 'index.html',locals())
+    return render(request, 'form1b.html',locals())
 
 def formC(request):
     students = Student.objects.all()
     streams = Stream.objects.all()
-    return render(request, 'index.html',locals())
+    return render(request, 'form1c.html',locals())
 
 
 

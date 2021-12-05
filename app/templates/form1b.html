@@ -1,0 +1,40 @@
+{%extends 'base.html' %}
+{% block title %} Stream Form 1B Page{% endblock %}
+{% block content%}
+
+
+  <!-- Staff Table section -->
+  <div class="container">
+    <div class="row my-4">
+        <h3 style="text-align: center;">Students in Form 1B </h3>
+
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+<table class="table bg-white">
+  <thead class="bg-info">
+    <tr class="text-white">
+        <th scope="col">More Details</th>
+        <th scope="col">Name</th>
+      <th scope="col">Email</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {% for stu in students %}
+      <th scope="row">
+        <a class= "btn btn-info btn-sm" href="{% url 'student-det' stu.id %}">View</a>
+      </th>
+      <td>{{stu.name}}</td>
+      <td>{{stu.email}}</td>
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+{% endblock %}
