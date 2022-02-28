@@ -10,7 +10,7 @@
     <div class="col-md-6 offset-md-3 bg-white p-3">
         <h3 style="text-decoration: underline;">Add New Student</h3>
 
-            <form action="" method="post" autocomplete="off">
+            <form action="" method="POST" autocomplete="off"enctype="multipart/form-data">
             {% csrf_token %}
             {{form |crispy }}
             <hr>

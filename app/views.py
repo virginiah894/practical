@@ -14,7 +14,7 @@ def home(request):
 
 def student_update(request):
     if request.method =='POST':
-        form = StudentForm(request.POST)
+        form = StudentForm(request.POST,request.FILES)
         if form.is_valid():
             form .save()
             return redirect('home')
@@ -47,19 +47,19 @@ def update_student(request,pk):
     student = Student.objects.get(id =pk)
 
     if  request.method == 'POST':
-        form = StudentForm(request.POST, instance = student)
+        form = StudentForm(request.POST,request.FILES, instance = student)
         if form.is_valid():
             form.save()
             return redirect ('home')
     else:
         form = StudentForm( instance=student)
 
-
     context = {
         'form': form,
 
     }
     return render (request, 'student_update.html',locals())
+
 
 
 
@@ -80,6 +80,20 @@ def formB(request):
 def formC(request):
       students = Student.objects.filter(stream_name__stream_name='Form 1C')
       return render(request, 'form1c.html',locals())
+
+def search_results(request):
+    if 'name' in request.GET and request.GET['name']:
+        search_term = request.GET.get('name')
+        searched_stu = Student.objects.filter(name__icontains = search_term)
+        if not search_term :
+            search_term = ""
+        message = f"{search_term}"
+        profile_pic = Student.objects.all()
+        return render(request, 'search.html', {'message':message, 'stu':searched_stu, 'profile_pic':profile_pic})
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html', {'message':message})
+
 
 
 

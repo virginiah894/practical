@@ -1,4 +1,8 @@
-{% extends 'base.html' %} {% load bootstrap5 %} {% block content %}
+
+{% extends 'base.html' %} {% load bootstrap5 %} 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+
+{% block content %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Kilimo High School</a>
@@ -17,7 +21,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'update'%}">Update</a>
+          <a class="nav-link" href="{% url 'update'%}">Add Students</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'oneA'%}">Form 1A</a>
@@ -30,6 +34,16 @@
         </li>
        
       </ul>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 mx-auto">
+                    <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results' %}">
+                        <input class="form-control my-2 my-sm-0 search-input" name="name" type="search" placeholder="Search Students" aria-label="Search">
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
   </div>
 </nav>
@@ -37,19 +51,25 @@
 <h3 style="text-align: center;margin-top: 12px;">All Our Students</h3>
 
 <div class="container">
+  
   <div class="row">
      
       
     {% for stu in students %}
 
     <div class="col-md-4">
+    
       <div class="card" style="margin-bottom: 12px">
-        <img
-          class="card-img-top"
-          src="https://media.istockphoto.com/photos/portrait-of-cool-teenager-with-white-sunglasses-picture-id1284906731?b=1&k=20&m=1284906731&s=170667a&w=0&h=jLRfqFvUvN_ikE2ni2mekYpFHNOviCxDc1ZdW0GhJj4="
-          alt="Card image cap"
-          style="width: 350px; height: 240px"
+        {% if stu.photo %}
+      
+        <img class="card-img-top"src="{{MEDIA_URL}}{{stu.photo.url}}" alt="Card image cap" style="width: 350px; height: 240px"
         />
+        {% endif %}
+        
+
+
+      
+
         <div class="card-body">
           <h5
             class="card-title"
@@ -63,6 +83,7 @@
             {{stu.name}}
           </h5>
           <p class="card-text">{{stu.stream}}</p>
+        
         </div>
 
         <div class="card-body">
@@ -70,15 +91,14 @@
             href="{% url 'student-det' stu.id%}"
             target="_blank"
             style="font-family: 'Nosifer', cursive; color: brown"
-            >Student Information</a
-          >
+            >Student Information</a>
     
 
 
           <hr />
 
           <button class="btn btn-info btn-sm">
-            <a href="{% url 'update'%}">Add Student</a>
+            <a href="{% url 'stu-update' stu.id%}">Update Information</a>
             
           </button>
           <button class="btn btn-danger btn-sm">
@@ -92,21 +112,7 @@
    
   </div>
 </div>
-<div class="container">
-<h4 style="text-align: center;">Our Streams</h4>
-<div class="row">
 
-
-    {% for str in streams%}
-    <div class="col-md-4">
-
-    
-      <button class="btn btn-outline-dark"><a href="">{{str.stream_name}}</a></button>
-      </div>
-
-    {% endfor %}
-</div>
-</div>
 
 
 {% endblock %}

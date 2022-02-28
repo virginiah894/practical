@@ -1,0 +1,49 @@
+
+{% load static%}
+{% block content %}
+
+
+
+<!-- Landing Page -->
+<div class="container mt-5">
+        {% if stu %}
+        <h2>Found {{stu | length}} result(s)  for  {{message}}</h2>
+        <hr>
+        <div class="contain col-sm-6 user">
+            {% for stu in stu %}
+            <div class="users">
+               
+
+                {% if stu.photo %}
+                <img src="{{stu.photo.url}}" alt="Profile Photo" width="90" height="90" class=""
+                style="border-radius: 50%">
+                {% else %}
+                <img src="https://cdn.pixabay.com/photo/2015/04/19/08/32/rose-729509_1280.jpg" alt="Avatar"  width="70" height="70" class=""
+                style="border-radius: 50%">
+                {% endif %}
+                <p>Name:{{stu.name}}</p>
+              
+                <p>Steam:{{stu.stream_name}}</p>
+             
+
+                <a
+            href="{% url 'student-det' stu.id%}"
+            target="_blank"
+            style="font-family: 'Nosifer', cursive; color: brown"
+            >Student Details</a>
+    
+
+
+          <hr />
+    
+            </div>
+            {% endfor %}
+          
+         
+        </div>
+        {% else %}
+        <h2>Found 0 students named {{message}}</h2>
+        {% endif %}
+</div>
+
+{% endblock %}
